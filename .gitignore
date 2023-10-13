@@ -22,7 +22,7 @@
 /explorecali/explorecali.iml
 /explorecali/.idea/*
 /explorecali/.idea/libraries/*
-/explorecali/target/
+/explorecali/target/*
 
 
 /.idea/*
