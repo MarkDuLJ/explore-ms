@@ -1,0 +1,14 @@
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/ExplorecaliApplication.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/domain/Region.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/service/TourService.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/domain/Difficulty.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/repo/TourRepository.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/domain/TourRatingPk.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/domain/TourPackage.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/web/RatingDto.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/web/TourRatingController.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/domain/Tour.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/repo/TourRatingRepository.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/domain/TourRating.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/service/TourPackageService.java
+/Users/mark/projects/explorecali/src/main/java/com/example/ec/repo/TourPackageRepository.java
