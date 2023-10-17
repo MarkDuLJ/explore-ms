@@ -59,19 +59,19 @@ public class TourRatingService {
      * @param id rating identifier
      * @return TourRatings
      */
-//    public Optional<TourRating> lookupRatingById(int id)  {
-//        return tourRatingRepository.findByPkTourId(id);
-//    }
+    public Optional<TourRating> lookupRatingById(int id)  {
+        return tourRatingRepository.findById(id);
+    }
 
     /**
      * Get All Ratings.
      *
      * @return List of TourRatings
      */
-//    public List<TourRating> lookupAll()  {
-//        LOGGER.info("Lookup all Ratings");
-//        return tourRatingRepository.findAll();
-//    }
+    public List<TourRating> lookupAll()  {
+        LOGGER.info("Lookup all Ratings");
+        return tourRatingRepository.findAll();
+    }
 
     /**
      * Get a page of tour ratings for a tour.
