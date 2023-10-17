@@ -161,9 +161,10 @@ public class TourRatingService {
      */
 
     public void rateMany(int tourId,  int score, Integer [] customers) {
-        LOGGER.info("Rate tour {} by customers {}", tourId, Arrays.asList(customers).toString());
+        LOGGER.debug("Rate tour {} by customers {}", tourId, Arrays.asList(customers).toString());
         tourRepository.findById(tourId).ifPresent(tour -> {
             for (Integer c : customers) {
+                LOGGER.debug("Attempt to create tour rating for customer: {}",c);
                 tourRatingRepository.save(new TourRating(tour, c, score));
             }
         });

@@ -3,6 +3,8 @@ package com.example.ec.web;
 import com.example.ec.service.TourRatingService;
 import com.example.ec.domain.*;
 import com.example.ec.repo.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.data.domain.*;
 import org.springframework.http.*;
@@ -21,6 +23,7 @@ import java.util.stream.*;
 @RequestMapping(path = "/tours/{tourId}/ratings")
 public class TourRatingController {
     private TourRatingService tourRatingService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(TourRatingController.class);
 
 
     @Autowired
@@ -33,10 +36,13 @@ public class TourRatingController {
     }
 
 
+    @PostMapping("/{score}")
+    @ResponseStatus(HttpStatus.CREATED)
     public  void createManyTourRatings(@PathVariable(value = "tourId") int tourId,
                                        @PathVariable(value = "score") int score,
-                                       @RequestParam("custmers") Integer customers[]
+                                       @RequestParam("customers") Integer customers[]
                                        ){
+        LOGGER.info("POST /tours/{}/ratings/{}", tourId,score);
         tourRatingService.rateMany(tourId,score,customers);
     }
 
@@ -133,6 +139,7 @@ public class TourRatingController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NoSuchElementException.class)
     public String return400(NoSuchElementException ex) {
+        LOGGER.error("Unable to complete transaction", ex);
         return ex.getMessage();
 
     }
