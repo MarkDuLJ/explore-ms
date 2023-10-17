@@ -1,11 +1,41 @@
+--
+--SET @tableNames = 'tour, tour_package, tour_rating'; -- Add table names here separated by commas
+--
+--BEGIN
+---- Iterate through the list of table names
+--    WHILE LENGTH(@tableNames) > 0 DO
+--        -- Get the first table name
+--        SET @tableName = SUBSTRING_INDEX(@tableNames, ',', 1);
+--
+--        -- Check if the table exists
+--        SELECT COUNT(*) INTO @tableExists
+--        FROM information_schema.tables
+--        WHERE table_schema = 'explorecali' -- Replace with your database name
+--        AND table_name = @tableName;
+--
+--        -- Drop the table if it exists
+--        SET @dropSql = IF(@tableExists > 0, CONCAT('DROP TABLE ', @tableName, ';'), '');
+--        PREPARE dropStatement FROM @dropSql;
+--        EXECUTE dropStatement;
+--        DEALLOCATE PREPARE dropStatement;
+--
+--        -- Remove the processed table name from the list
+--        SET @tableNames = TRIM(BOTH ',' FROM SUBSTRING(@tableNames, LENGTH(@tableName) + 2));
+--    END WHILE;
+--END;
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `tour_package`;
+DROP TABLE IF EXISTS `tour`;
+DROP TABLE IF EXISTS `tour_rating`;
+SET FOREIGN_KEY_CHECKS = 1;
 
 
-CREATE TABLE tour_package(
+CREATE TABLE IF NOT EXISTS tour_package(
   code CHAR(2) NOT NULL UNIQUE,
   name VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE tour (
+CREATE TABLE IF NOT EXISTS tour (
   id BIGINT AUTO_INCREMENT PRIMARY KEY,
   tour_package_code CHAR(2) NOT NULL,
   title VARCHAR(100) NOT NULL,
@@ -20,7 +50,7 @@ CREATE TABLE tour (
 );
 ALTER TABLE tour ADD CONSTRAINT FK_TOUR_PACKAGE_CODE FOREIGN KEY (tour_package_code) REFERENCES tour_package(code);
 
-CREATE TABLE tour_rating (
+CREATE TABLE IF NOT EXISTS tour_rating (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     tour_id BIGINT,
     customer_id BIGINT,
